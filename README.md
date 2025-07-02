@@ -69,8 +69,11 @@ Após a execução, o menu interativo da agenda será exibido no seu terminal.
 
 O projeto está organizado da seguinte forma:
 agenda-de-contatos/
+
 ├── main.py   # Arquivo principal que executa o programa e o menu
+
 ├── funcoes.py    # Módulo com todas as funções da agenda
+
 └── contatos..txt     # Arquivo de texto onde os contatos são salvos
 
 ---
