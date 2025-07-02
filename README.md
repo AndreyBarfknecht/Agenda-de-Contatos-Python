@@ -48,12 +48,12 @@ Para executar este projeto em sua máquina local, siga os passos abaixo.
 
 1.  **Clone o repositório** (ou baixe os arquivos):
     ```bash
-    git clone [link-do-seu-repositorio-no-github]
+    git clone [https://github.com/AndreyBarfknecht/Agenda-de-Contatos-Python]
     ```
 
 2.  **Navegue até o diretório** do projeto:
     ```bash
-    cd nome-da-pasta-do-projeto
+    cd Agenda-de-Contatos
     ```
 
 3.  **Execute o programa principal**:
@@ -68,12 +68,10 @@ Após a execução, o menu interativo da agenda será exibido no seu terminal.
 ## 📂 Estrutura de Arquivos
 
 O projeto está organizado da seguinte forma:
-
 agenda-de-contatos/
-├── main.py           # Arquivo principal que executa o programa e o menu
-├── funcoes.py        # Módulo com todas as funções da agenda (criar, listar, etc.)
-└── contatos.txt      # Arquivo de texto onde os contatos são salvos (criado na primeira execução)
-
+├── main.py   # Arquivo principal que executa o programa e o menu
+├── funcoes.py    # Módulo com todas as funções da agenda
+└── contatos..txt     # Arquivo de texto onde os contatos são salvos
 
 ---
 
@@ -81,5 +79,5 @@ agenda-de-contatos/
 
 Andrey Barfknecht Rodrigues
 
-[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/seu-usuario-aqui/)
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/seu-usuario-aqui)
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrey-rodrigues-7084b42b6/)
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndreyBarfknecht)
