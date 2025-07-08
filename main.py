@@ -17,7 +17,7 @@ while True:
     console.print("[dark_slate_gray1][2] Listar Contatos.")
     console.print("[dark_slate_gray1][3] Buscar Contato.")
     console.print("[dark_slate_gray1][4] Remover Contato.")
-    console.print("[dark_slate_gray1][5] Sair.")
+    console.print("[dark_slate_gray1][5] Sair e Salvar.")
     console.print("[dark_slate_gray1][6] Exportar agenda para outros formatos.")
     console.print() # Linha em branco
     console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
@@ -39,7 +39,7 @@ while True:
         funcoes.exporta_lista(agenda_de_contatos)
     else:
         console.print("\n----------------------------------------------")
-        console.print("Por favor digite uma das opções acima (1 - 5) ")
+        console.print("Por favor digite uma das opções acima (1 - 6) ")
         console.print("----------------------------------------------")
         input("\nPressione Enter para voltar ao menu...")
 
