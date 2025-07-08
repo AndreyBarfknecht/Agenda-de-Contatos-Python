@@ -255,5 +255,3 @@ def exporta_lista(agenda_de_contatos):
         exportar_csv(agenda_de_contatos)
 
     input("\nPressione Enter para voltar ao menu...")
-
-
