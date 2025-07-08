@@ -6,7 +6,8 @@ from rich.panel import Panel
 from rich.table import Table
 import time 
 from rich.progress import Progress 
-
+import json
+import csv
 # Crie um objeto console para usar o rich
 console = Console()
 
@@ -62,7 +63,7 @@ def carregar_contatos():
 # função para criar novo contato
 def criar_contato(agenda_de_contatos):
     desenhar_cabecalho("Criar Contato")
-
+    console.print("Escreva e pressione 'ENTER'")
     nome_digitado = input("Qual o nome do contato --> ") # usuário digita o nome
     telefone_digitado = input("Qual o telefone --> ") # usuário digita o telefone
     email_digitado = input("Qual o email --> ") # usuário digita o email
@@ -81,7 +82,7 @@ def criar_contato(agenda_de_contatos):
 def listar_contatos(agenda_de_contatos):
     # Limpa a tela e desenha o cabeçalho para esta "página"
     desenhar_cabecalho("Lista de Contatos")
-
+    
     if not agenda_de_contatos:
         console.print("[yellow]Sua agenda está vazia.[/yellow]")
     else:
@@ -106,6 +107,7 @@ def listar_contatos(agenda_de_contatos):
 # Função para buscar contato
 def buscar_contato(agenda_de_contatos):
     desenhar_cabecalho("Buscar Contato")
+    console.print("Escreva e pressione 'ENTER'")
     nome_buscado = input("Qual o nome do contato que você quer buscar --> ") # qual nome o usuário quer buscar
     
     for contato in agenda_de_contatos:
@@ -135,9 +137,9 @@ def buscar_contato(agenda_de_contatos):
 
 #Função para remover contato
 def remover_contato(agenda_de_contatos):
-    
     desenhar_cabecalho("Remover um contato")
 
+    console.print("Escreva e pressione 'ENTER'")    
     nome_buscado = input("Qual o nome do contato que você quer remover --> ")
 
     for contato in agenda_de_contatos: # loop para verificar se o contato existe
@@ -177,5 +179,39 @@ def salvar_agenda(agenda_de_contatos):
     console.print("O programa será encerrado.")
     time.sleep(1)
 
+def exportar_json(agenda_de_contatos):
+    with open('contatos.json', 'w', encoding='utf-8') as arquivo_json:
+            json.dump(agenda_de_contatos, arquivo_json, indent=4, ensure_ascii=False)
+            console.print("\n[magenta3]Agenda Exportada para JSON com sucesso!")
+            
+
+
+def exportar_csv(agenda_de_contatos):
+    cabecalhos = ['nome', 'telefone', 'email']
+    with open('contatos.csv', 'w', encoding='utf-8', newline='') as arquivo_csv:
+            escritor = csv.DictWriter(arquivo_csv, fieldnames=cabecalhos)
+            escritor.writeheader()
+            escritor.writerows(agenda_de_contatos)
+            console.print("\n[magenta3]Agenda Exportada para CSV com sucesso!")
+
+
+
+
+def exporta_lista(agenda_de_contatos):
+    desenhar_cabecalho("Exportar Agenda")
+    console.print("[dark_slate_gray1][1] Exportar para JSON.")
+    console.print("[dark_slate_gray1][2] Exportar para CSV.")
+    console.print()
+    console.print("[magenta3]Digite uma das opções 1 ou 2, e pressione 'ENTER'. ")
+
+    escolha_usuario = input("--> ")
+
+    if escolha_usuario == "1":
+        exportar_json(agenda_de_contatos)
+
+    elif escolha_usuario == "2":
+        exportar_csv(agenda_de_contatos)
+
+    input("\nPressione Enter para voltar ao menu...")
 
 

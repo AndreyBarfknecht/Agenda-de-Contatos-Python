@@ -13,13 +13,14 @@ while True:
     desenhar_cabecalho("Agenda de Contatos")
 
     # Imprime o menu usando o console do rich
-    console.print("[magenta3]Escolha uma opção:")
-    console.print("[dark_slate_gray1][1] Adicionar Contato")
-    console.print("[dark_slate_gray1][2] Listar Contatos")
-    console.print("[dark_slate_gray1][3] Buscar Contato")
-    console.print("[dark_slate_gray1][4] Remover Contato")
-    console.print("[dark_slate_gray1][5] Sair")
+    console.print("[dark_slate_gray1][1] Adicionar Contato.")
+    console.print("[dark_slate_gray1][2] Listar Contatos.")
+    console.print("[dark_slate_gray1][3] Buscar Contato.")
+    console.print("[dark_slate_gray1][4] Remover Contato.")
+    console.print("[dark_slate_gray1][5] Sair.")
+    console.print("[dark_slate_gray1][6] Exportar agenda para outros formatos.")
     console.print() # Linha em branco
+    console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
     escolha_usuario = input("--> ")
    
     if escolha_usuario == "1":
@@ -34,6 +35,8 @@ while True:
         funcoes.salvar_agenda(agenda_de_contatos)
         print("\nO programa encerrou ")
         break # Fim do programa
+    elif escolha_usuario == "6":
+        funcoes.exporta_lista(agenda_de_contatos)
     else:
         console.print("\n----------------------------------------------")
         console.print("Por favor digite uma das opções acima (1 - 5) ")
