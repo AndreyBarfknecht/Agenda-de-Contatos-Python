@@ -1,4 +1,3 @@
 Teste00,54 87454-8476,teste00@gmail.com
 Teste001,54 76845-9674,teste001@gmail.com
 ROSE,54986753745,urso2@gmail.com
-d
