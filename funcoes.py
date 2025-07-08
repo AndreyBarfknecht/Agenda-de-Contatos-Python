@@ -1,14 +1,15 @@
 
-import os
-import pyfiglet
+import os # descobrir o sistema OP
+import pyfiglet # gerar o titulo em ASCII
 from rich.console import Console # deixa as linha coloridas
-from rich.panel import Panel
-from rich.table import Table
-import time 
-from rich.progress import Progress 
-import json
-import csv
-# Crie um objeto console para usar o rich
+from rich.panel import Panel # imprime o logo ASCII dentro de um painel
+from rich.table import Table # para listar os contatos dentro de uma tabela
+import time # ajuda nas animaçoes da barra de progresso 
+from rich.progress import Progress # barra de progresso
+import json # exportar par JSON
+import csv # exportar para CSV
+
+#objeto console para usar o rich
 console = Console()
 
 
@@ -27,7 +28,7 @@ def desenhar_cabecalho(texto_do_titulo):
     # Gera o texto em ASCII Art
     titulo_ascii = pyfiglet.figlet_format(texto_do_titulo, font="slant")
     
-    # Imprime o título em verde e dentro de um painel
+    # Imprime o título  dentro de um painel
     console.print(Panel.fit(f"[bright_blue]{titulo_ascii}[/]", subtitle="[Andrey]"))
     console.print() # Imprime uma linha em branco para dar espaço
 
@@ -74,8 +75,21 @@ def criar_contato(agenda_de_contatos):
         'email': email_digitado
     }
 
-    agenda_de_contatos.append(novo_contato) # adicionar contato 
-    console.print(f"\n----Novo contato {nome_digitado} salvo----")
+    # verificar se o contato existe
+    contato_existente = False
+    for contato in agenda_de_contatos:
+        if  novo_contato == contato:
+            contato_existente = True
+            break
+            
+    if contato_existente:
+        console.print()
+        console.print("[magenta3]Este contato já existe na agenda")
+        
+    else:
+        agenda_de_contatos.append(novo_contato) # adicionar contato 
+        console.print(f"\n----Novo contato {nome_digitado} salvo----")
+        
     input("\nPressione Enter para voltar ao menu...")
 
 # Função para listar os nomes 
@@ -179,24 +193,52 @@ def salvar_agenda(agenda_de_contatos):
     console.print("O programa será encerrado.")
     time.sleep(1)
 
+#Função para exporta a agenda para JSON
 def exportar_json(agenda_de_contatos):
     with open('contatos.json', 'w', encoding='utf-8') as arquivo_json:
             json.dump(agenda_de_contatos, arquivo_json, indent=4, ensure_ascii=False)
-            console.print("\n[magenta3]Agenda Exportada para JSON com sucesso!")
+    console.print()
+    with Progress() as progress:
+        
+        
+        tarefa_de_salvamento = progress.add_task("[magenta3]Salvando...", total=100) # total da barra 
+
+       
+        while not progress.finished: # enquanto não finaliza a barra nao termina o loop
+            
+            # Avança a barra de progresso um pouquinho.
+            progress.update(tarefa_de_salvamento, advance=1.5)
+
+            # pequena pausa para ver a animação.
+            time.sleep(0.02) 
+    console.print("\n[magenta3]Agenda Exportada para JSON com sucesso!")
             
 
-
+#Função para exportar a agenda para CSV
 def exportar_csv(agenda_de_contatos):
     cabecalhos = ['nome', 'telefone', 'email']
     with open('contatos.csv', 'w', encoding='utf-8', newline='') as arquivo_csv:
             escritor = csv.DictWriter(arquivo_csv, fieldnames=cabecalhos)
             escritor.writeheader()
             escritor.writerows(agenda_de_contatos)
-            console.print("\n[magenta3]Agenda Exportada para CSV com sucesso!")
+    console.print()
+    with Progress() as progress:
+        
+        
+        tarefa_de_salvamento = progress.add_task("[magenta3]Salvando...", total=100) # total da barra 
 
+       
+        while not progress.finished: # enquanto não finaliza a barra nao termina o loop
+            
+            # Avança a barra de progresso um pouquinho.
+            progress.update(tarefa_de_salvamento, advance=1.5)
 
+            # pequena pausa para ver a animação.
+            time.sleep(0.02) 
+            
+    console.print("\n[magenta3]Agenda Exportada para CSV com sucesso!")
 
-
+#Função que chamas as outras para exportar
 def exporta_lista(agenda_de_contatos):
     desenhar_cabecalho("Exportar Agenda")
     console.print("[dark_slate_gray1][1] Exportar para JSON.")
