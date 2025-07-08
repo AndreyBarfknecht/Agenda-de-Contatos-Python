@@ -20,9 +20,8 @@ while True:
     console.print("[dark_slate_gray1][4] Remover Contato")
     console.print("[dark_slate_gray1][5] Sair")
     console.print() # Linha em branco
-
     escolha_usuario = input("--> ")
-
+   
     if escolha_usuario == "1":
         funcoes.criar_contato(agenda_de_contatos)
     elif escolha_usuario =="2":
@@ -36,6 +35,8 @@ while True:
         print("\nO programa encerrou ")
         break # Fim do programa
     else:
-        print("\n----------------------------------------------")
-        print("Por favor digite uma das opções acima (1 - 5) ")
-        print("----------------------------------------------")
+        console.print("\n----------------------------------------------")
+        console.print("Por favor digite uma das opções acima (1 - 5) ")
+        console.print("----------------------------------------------")
+        input("\nPressione Enter para voltar ao menu...")
+
