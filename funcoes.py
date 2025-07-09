@@ -254,4 +254,6 @@ def exporta_lista(agenda_de_contatos):
     elif escolha_usuario == "2":
         exportar_csv(agenda_de_contatos)
 
+    else:
+        console.print("Você não digitou 1 ou 2 !!!")
     input("\nPressione Enter para voltar ao menu...")
