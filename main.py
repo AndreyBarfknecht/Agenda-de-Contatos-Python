@@ -8,7 +8,6 @@ from funcoes import *
 agenda_de_contatos = funcoes.carregar_contatos() # Função para carregar os contatos do arquivo.txt
 
 # começo do programa
-print("\n----Bem vindo a agenda de Contatos Digital----")
 while True:
     desenhar_cabecalho("Agenda de Contatos")
 

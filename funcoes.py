@@ -65,9 +65,22 @@ def carregar_contatos():
 def criar_contato(agenda_de_contatos):
     desenhar_cabecalho("Criar Contato")
     console.print("Escreva e pressione 'ENTER'")
-    nome_digitado = input("Qual o nome do contato --> ") # usuário digita o nome
+    
+    nome_digitado = input("Qual o nome do contato --> ") # usuário digita o nome 
+    while not nome_digitado.strip(): # verifica se o nome não está vazio
+        console.print("[yellow]O nome não pode estar vazio!!!")
+        nome_digitado = input("Qual o nome do contato --> ") # usuário digita novamente
+
     telefone_digitado = input("Qual o telefone --> ") # usuário digita o telefone
+    while not telefone_digitado.strip():
+        console.print("[yellow]O telefone não pode estar vazio!!!")
+        telefone_digitado = input("Qual o telefone --> ") # usuário digita o telefone
+
     email_digitado = input("Qual o email --> ") # usuário digita o email
+    while not email_digitado.strip():
+        console.print("[yellow]O email não pode estar vazio!!!")
+        email_digitado = input("Qual o email --> ") # usuário digita o email
+
 
     novo_contato = { # dicionario 
         'nome': nome_digitado,  
@@ -82,13 +95,13 @@ def criar_contato(agenda_de_contatos):
             contato_existente = True
             break
             
-    if contato_existente:
+    if contato_existente: # se o contato já existe
         console.print()
         console.print("[magenta3]Este contato já existe na agenda")
         
     else:
-        agenda_de_contatos.append(novo_contato) # adicionar contato 
-        console.print(f"\n----Novo contato {nome_digitado} salvo----")
+        agenda_de_contatos.append(novo_contato) # adiciona o contato, se ele não existe
+        console.print(f"[magenta3]\n----Novo contato {nome_digitado} salvo----")
         
     input("\nPressione Enter para voltar ao menu...")
 
@@ -121,28 +134,39 @@ def listar_contatos(agenda_de_contatos):
 # Função para buscar contato
 def buscar_contato(agenda_de_contatos):
     desenhar_cabecalho("Buscar Contato")
-    console.print("Escreva e pressione 'ENTER'")
-    nome_buscado = input("Qual o nome do contato que você quer buscar --> ") # qual nome o usuário quer buscar
     
+    console.print("Escreva e pressione 'ENTER'")
+    
+    nome_buscado = input("Qual o nome do contato que você quer buscar --> ") # qual nome o usuário quer buscar
+    while not nome_buscado.strip(): # verifica se não está em branco
+        console.print("[magenta3]Você digitou um nome em branco!!!")
+        nome_buscado = input("Qual o nome do contato que você quer buscar --> ") # qual nome o usuário quer buscar
+
+    resultados_encontrados = [] # lista de resultados encontrados
+
     for contato in agenda_de_contatos:
         
-        if contato ['nome'] == nome_buscado:
-            # Cria a tabela
-            tabela = Table(title="Contato Encontrado", show_header=True, header_style="magenta3")
+        if nome_buscado.lower() in contato['nome'].lower(): # busca pelo nome tanto com letra maiúsculas/minúsculas
+            resultados_encontrados.append(contato) # adiciona a lista de resultados_encontrados
         
-            # Adiciona as colunas
-            tabela.add_column("Nome", style="dark_slate_gray1", width=20)
-            tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
-            tabela.add_column("E-mail", style="dark_slate_gray1")
+    if resultados_encontrados: # se achar contato
+    # Cria a tabela
+        tabela = Table(title=f"\n[bright_blue]Contato Encontrados com o nome [magenta3]{nome_buscado}", show_header=True, header_style="magenta3")
+    
+        # Adiciona as colunas
+        tabela.add_column("Nome", style="dark_slate_gray1", width=20)
+        tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
+        tabela.add_column("E-mail", style="dark_slate_gray1")
 
-            # A LINHA QUE FALTAVA: Adiciona os dados do contato encontrado
+        for contato in resultados_encontrados: # passa pela lista de resultados e adiciona a tabela
+        #Adiciona os dados do contato encontrado
             tabela.add_row(contato['nome'], contato['telefone'], contato['email'])
-            
-            # Agora sim, imprime a tabela preenchida
-            console.print(tabela)
-            break
+    
+        # imprime a tabela preenchida
+        console.print(tabela)
+        
 
-    else:
+    else: # se não mostra que não existe nenhum contato com o nome buscado
         console.print("\n------------------------------")
         console.print(f"Contato {nome_buscado} não foi encontrado")
         
@@ -151,12 +175,99 @@ def buscar_contato(agenda_de_contatos):
 
 #Função para remover contato
 def remover_contato(agenda_de_contatos):
-    desenhar_cabecalho("Remover um contato")
+    desenhar_cabecalho("Remover um contato") # desenha o nome gigante
 
     console.print("Escreva e pressione 'ENTER'")    
     nome_buscado = input("Qual o nome do contato que você quer remover --> ")
+    while not nome_buscado.strip(): # verifica se o nome não está em branco
+        console.print("[magenta3]Você digitou um nome em branco!!!")
+        nome_buscado = input("Qual o nome do contato que você quer remover --> ") # pede para digitar novamente
+    
+    resultados_encontrados = [] # lista de resultados encontrados
 
-    for contato in agenda_de_contatos: # loop para verificar se o contato existe
+    for contato in agenda_de_contatos: #loop para buscar os contatos encontrados
+        
+        if nome_buscado.lower() in contato['nome'].lower(): # busca pelo nome tanto com letra maiúsculas/minúsculas
+            resultados_encontrados.append(contato) # adiciona a lista de resultados_encontrados
+
+    if len (resultados_encontrados) == 0: # se não tiver nenhum contato com o nome buscado 
+            console.print(f"\n[yellow]Nenhum contato encontrado com o termo '{nome_buscado}'.[/yellow]")
+
+    elif len (resultados_encontrados) == 1: # se tem 1 contato com esse
+       
+            # cria tabela
+            tabela = Table(title=f"\n[bright_blue]Contato Encontrados com o nome {nome_buscado}", show_header=True, header_style="magenta3")
+            # Adiciona as colunas
+            tabela.add_column("Nome", style="dark_slate_gray1", width=20)
+            tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
+            tabela.add_column("E-mail", style="dark_slate_gray1")
+            for contato in resultados_encontrados: # passa pela lista de resultados e adiciona a tabela
+                tabela.add_row(contato['nome'], contato['telefone'], contato['email'])
+                console.print(tabela) # imprime a tabela
+            console.print("[magenta3]Tem certeza que deseja remover este contato? (s/n)")
+            confirmacao = console.input(f"\nDigite 's' pra remover o contato\n'n' para deixar o contato na lista\n -->")
+            if confirmacao == "s".lower(): # se o usuario quiser remover
+                contato_para_remover = resultados_encontrados[0] # define o contato para remover
+                agenda_de_contatos.remove(contato_para_remover) # remove o contato
+                console.print(f"\n[magenta3]Contato foi removido com sucesso")
+            else:
+                console.print("\n[magenta3]Contato não foi removido") # se nao for removido
+    
+    
+    # se foir encontrado mais de 1 contato com o mesmo nome
+    else:
+        console.print("[yellow]Vários contatos foram encontrados. Por favor, escolha qual deles remover:[/yellow]")
+        # cria tabela
+        tabela = Table(title=f"\n[bright_blue]Contatos Encontrados com o nome [magenta3]{nome_buscado}", show_header=True, header_style="magenta3")
+        # Adiciona as colunas
+        tabela.add_column("Número",style="dark_slate_gray1", width=20)
+        tabela.add_column("Nome", style="dark_slate_gray1", width=20)
+        tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
+        tabela.add_column("E-mail", style="dark_slate_gray1")
+        for indice, contato in enumerate(resultados_encontrados): #lopp para adicionar os contatos na tabela
+            tabela.add_row(str(indice + 1), contato['nome'], contato['telefone'], contato['email'])
+        
+        console.print(tabela)
+
+        while True:
+            escolha_str = console.input ("Digite o 'Número' do contato que você quer remover ou digite '0' para cancelar\n--> ")
+
+            try:
+            #  converte a escolha para um número inteiro
+                escolha_num = int(escolha_str)
+
+            # Verifica se o usuário quer cancelar
+                if escolha_num == 0:
+                    console.print("[cyan]Operação cancelada.[/cyan]")
+                    break
+            
+            # Verifica se o número está no intervalo correto
+                elif 1 <= escolha_num <= len(resultados_encontrados):
+                
+                # Pega o índice correto (usuário digita 1, que é o índice 0)
+                    indice_para_remover = escolha_num - 1
+                
+                # define o contato para remover
+                    contato_para_remover = resultados_encontrados[indice_para_remover]
+
+                # Remove o contato da LISTA PRINCIPAL
+                    agenda_de_contatos.remove(contato_para_remover)
+
+                    console.print(f"\n[bold green]Contato '{contato_para_remover['nome']}' removido com sucesso![/bold green]")
+                    break
+                else:
+                # O usuário digitou um número, mas está fora do intervalo válido
+                    console.print(f"[bold red]Escolha inválida. Por favor, digite um número entre 1 e {len(resultados_encontrados)}.[/bold red]")
+
+            except ValueError:
+            # Se o int() falhar, significa que o usuário não digitou um número
+                console.print("[bold red]Entrada inválida. Por favor, digite apenas o número correspondente.[/bold red]")
+
+
+    input("\nPressione Enter para voltar ao menu...")
+    
+
+    """for contato in agenda_de_contatos: # loop para verificar se o contato existe
         if contato ['nome'] == nome_buscado:
             agenda_de_contatos.remove(contato) # remove o contato inteiro
             console.print(f"\nContato {nome_buscado} foi removido com sucesso")
@@ -165,7 +276,7 @@ def remover_contato(agenda_de_contatos):
     else:
         console.print("\n------------------------------")
         console.print(f"Contato {nome_buscado} não foi encontrado")
-    input("\nPressione Enter para voltar ao menu...")
+    input("\nPressione Enter para voltar ao menu...")"""
 
 # Função para salvar os contato em um arquivo
 def salvar_agenda(agenda_de_contatos):
