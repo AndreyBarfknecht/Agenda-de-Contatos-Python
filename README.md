@@ -106,7 +106,7 @@ Este projeto foi desenvolvido para demonstrar e praticar:
 
 ## 📊 Status do Projeto
 
-⌛ **Em progresso** - Todas as funcionalidades implementadas e testadas
+⌛ **Em progresso** - Todas as funcionalidades implementadas testadas
 
 ## 🤝 Contribuições
 
@@ -116,10 +116,6 @@ Sugestões e melhorias são bem-vindas! Sinta-se à vontade para:
 - Sugerir novas funcionalidades
 - Enviar pull requests
 - Compartilhar feedback
-
-## 📄 Licença
-
-Este projeto é de uso educacional e está disponível sob licença MIT.
 
 ## 👨‍💻 Autor
 
