@@ -106,7 +106,7 @@ Este projeto foi desenvolvido para demonstrar e praticar:
 
 ## 📊 Status do Projeto
 
-✅ **Concluído** - Todas as funcionalidades implementadas e testadas
+⌛ **Em progresso** - Todas as funcionalidades implementadas e testadas
 
 ## 🤝 Contribuições
 
