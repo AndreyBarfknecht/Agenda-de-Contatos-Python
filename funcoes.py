@@ -13,7 +13,7 @@ import csv # exportar para CSV
 console = Console()
 
 
-
+# Função para dar clear na tela
 def limpar_tela():
     # Verifica se o sistema operacional é Windows ('nt') ou outro (Linux/macOS)
     if os.name == 'nt':
@@ -21,6 +21,7 @@ def limpar_tela():
     else:
         os.system('clear')
 
+# Função para desenhar o nome em ASCII
 def desenhar_cabecalho(texto_do_titulo):
     """Limpa a tela e desenha um cabeçalho estilizado."""
     limpar_tela() 
@@ -31,7 +32,6 @@ def desenhar_cabecalho(texto_do_titulo):
     # Imprime o título  dentro de um painel
     console.print(Panel.fit(f"[bright_blue]{titulo_ascii}[/]", subtitle="[Andrey]"))
     console.print() # Imprime uma linha em branco para dar espaço
-
 
 # Função para ler ou criar arquivo txt
 def carregar_contatos():
@@ -171,7 +171,6 @@ def buscar_contato(agenda_de_contatos):
         console.print(f"Contato {nome_buscado} não foi encontrado")
         
     input("\nPressione Enter para voltar ao menu...")
-
 
 #Função para remover contato
 def remover_contato(agenda_de_contatos):
@@ -324,7 +323,6 @@ def exportar_json(agenda_de_contatos):
             time.sleep(0.02) 
     console.print("\n[magenta3]Agenda Exportada para JSON com sucesso!")
             
-
 #Função para exportar a agenda para CSV
 def exportar_csv(agenda_de_contatos):
     cabecalhos = ['nome', 'telefone', 'email']
