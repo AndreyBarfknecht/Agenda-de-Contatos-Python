@@ -22,6 +22,7 @@ while True:
     console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
     escolha_usuario = input("--> ")
    
+    #escolha do usuario
     if escolha_usuario == "1":
         funcoes.criar_contato(agenda_de_contatos)
     elif escolha_usuario =="2":
@@ -32,7 +33,6 @@ while True:
         funcoes.remover_contato(agenda_de_contatos)
     elif escolha_usuario == "5":
         funcoes.salvar_agenda(agenda_de_contatos)
-        print("\nO programa encerrou ")
         break # Fim do programa
     elif escolha_usuario == "6":
         funcoes.exporta_lista(agenda_de_contatos)

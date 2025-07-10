@@ -302,6 +302,7 @@ def salvar_agenda(agenda_de_contatos):
     console.print("\n[magenta3]Agenda salva com sucesso!")
     console.print("O programa será encerrado.")
     time.sleep(1)
+    print("\nO programa encerrou ")
 
 #Função para exporta a agenda para JSON
 def exportar_json(agenda_de_contatos):
