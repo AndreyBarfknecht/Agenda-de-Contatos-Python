@@ -16,8 +16,9 @@ while True:
     console.print("[dark_slate_gray1][2] Listar Contatos.")
     console.print("[dark_slate_gray1][3] Buscar Contato.")
     console.print("[dark_slate_gray1][4] Remover Contato.")
-    console.print("[dark_slate_gray1][5] Exportar agenda para outros formatos.")
-    console.print("[dark_slate_gray1][6] Salvar e Sair.")
+    console.print("[dark_slate_gray1][5] Editar Contato.")
+    console.print("[dark_slate_gray1][6] Exportar agenda para outros formatos.")
+    console.print("[dark_slate_gray1][7] Salvar e Sair.")
     console.print() # Linha em branco
     console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
     escolha_usuario = input("--> ")
@@ -32,8 +33,10 @@ while True:
     elif escolha_usuario == "4":
         funcoes.remover_contato(agenda_de_contatos)
     elif escolha_usuario == "5":
-        funcoes.exporta_lista(agenda_de_contatos)
+        funcoes.editar_contato(agenda_de_contatos)
     elif escolha_usuario == "6":
+        funcoes.exporta_lista(agenda_de_contatos)
+    elif escolha_usuario == "7":
         funcoes.salvar_agenda(agenda_de_contatos)
         break # Fim do programa
     else:
