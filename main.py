@@ -2,46 +2,48 @@
 Permite cadastrar contatos com nome, telefone e e-mail. O usuário pode listar, buscar e remover
 contatos. Trabalha com listas, dicionários e pode incluir armazenamento em arquivo."""
 
-import funcoes
-from funcoes import *
+import interface_usuario
+import gerenciador_arquivos
+
+
 #Lista de contatos 
-agenda_de_contatos = funcoes.carregar_contatos() # Função para carregar os contatos do arquivo.txt
+agenda_de_contatos = gerenciador_arquivos.carregar_contatos() # Função para carregar os contatos do arquivo.txt
 
 # começo do programa
 while True:
-    desenhar_cabecalho("Agenda de Contatos")
+    interface_usuario.desenhar_cabecalho("Agenda de Contatos")
 
-    # Imprime o menu usando o console do rich
-    console.print("[dark_slate_gray1][1] Adicionar Contato.")
-    console.print("[dark_slate_gray1][2] Listar Contatos.")
-    console.print("[dark_slate_gray1][3] Buscar Contato.")
-    console.print("[dark_slate_gray1][4] Remover Contato.")
-    console.print("[dark_slate_gray1][5] Editar Contato.")
-    console.print("[dark_slate_gray1][6] Exportar agenda para outros formatos.")
-    console.print("[dark_slate_gray1][7] Salvar e Sair.")
-    console.print() # Linha em branco
-    console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
+    # Imprime o menu usando o interface_usuario.console do rich
+    interface_usuario.console.print("[dark_slate_gray1][1] Adicionar Contato.")
+    interface_usuario.console.print("[dark_slate_gray1][2] Listar Contatos.")
+    interface_usuario.console.print("[dark_slate_gray1][3] Buscar Contato.")
+    interface_usuario.console.print("[dark_slate_gray1][4] Remover Contato.")
+    interface_usuario.console.print("[dark_slate_gray1][5] Editar Contato.")
+    interface_usuario.console.print("[dark_slate_gray1][6] Exportar agenda para outros formatos.")
+    interface_usuario.console.print("[dark_slate_gray1][7] Salvar e Sair.")
+    interface_usuario.console.print() # Linha em branco
+    interface_usuario.console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
     escolha_usuario = input("--> ")
    
     #escolha do usuario
     if escolha_usuario == "1":
-        funcoes.criar_contato(agenda_de_contatos)
+        interface_usuario.criar_contato(agenda_de_contatos)
     elif escolha_usuario =="2":
-        funcoes.listar_contatos(agenda_de_contatos)
+        interface_usuario.listar_contatos(agenda_de_contatos)
     elif escolha_usuario == "3":
-        funcoes.buscar_contato(agenda_de_contatos)
+        interface_usuario.buscar_contato(agenda_de_contatos)
     elif escolha_usuario == "4":
-        funcoes.remover_contato(agenda_de_contatos)
+        interface_usuario.remover_contato(agenda_de_contatos)
     elif escolha_usuario == "5":
-        funcoes.editar_contato(agenda_de_contatos)
+        interface_usuario.editar_contato(agenda_de_contatos)
     elif escolha_usuario == "6":
-        funcoes.exporta_lista(agenda_de_contatos)
+        interface_usuario.exporta_lista(agenda_de_contatos)
     elif escolha_usuario == "7":
-        funcoes.salvar_agenda(agenda_de_contatos)
+        gerenciador_arquivos.salvar_agenda(agenda_de_contatos)
         break # Fim do programa
     else:
-        console.print("\n----------------------------------------------")
-        console.print("Por favor digite uma das opções acima (1 - 6) ")
-        console.print("----------------------------------------------")
+        interface_usuario.console.print("\n----------------------------------------------")
+        interface_usuario.console.print("Por favor digite uma das opções acima (1 - 6) ")
+        interface_usuario.console.print("----------------------------------------------")
         input("\nPressione Enter para voltar ao menu...")
 
