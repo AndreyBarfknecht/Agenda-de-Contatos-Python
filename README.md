@@ -1,126 +1,334 @@
 # 📞 Agenda de Contatos Python
 
-Uma aplicação simples e eficiente para gerenciar contatos pessoais, desenvolvida em Python como projeto acadêmico. O programa oferece uma interface de linha de comando intuitiva para adicionar, listar, buscar e remover contatos, com persistência de dados garantida.
+<div align="center">
 
-## ✨ Funcionalidades
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Rich](https://img.shields.io/badge/Rich-FF6B6B?style=for-the-badge&logo=python&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Concluído-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-- ➕ **Adicionar Contatos**: Insira nome, telefone e e-mail de novos contatos
-- 📋 **Listar Contatos**: Visualize todos os contatos salvos de forma organizada
-- 🔍 **Buscar Contatos**: Encontre contatos específicos pelo nome
-- 🗑️ **Remover Contatos**: Exclua contatos da agenda
-- 💾 **Persistência Automática**: Dados salvos automaticamente em arquivo de texto
-- 🔄 **Carregamento Automático**: Contatos carregados na inicialização do programa
+*Uma aplicação moderna e intuitiva para gerenciamento de contatos pessoais*
 
-## 🛠️ Tecnologias e Conceitos
+[Características](#-características) •
+[Instalação](#-instalação) •
+[Como Usar](#-como-usar) •
+[Tecnologias](#-tecnologias-utilizadas) •
+[Estrutura](#-estrutura-do-projeto)
 
-### Linguagem
-- **Python 3.x**
+</div>
 
-### Estruturas de Dados
-- **Listas** (`list`) - Armazenamento do conjunto de contatos
-- **Dicionários** (`dict`) - Informações individuais de cada contato
+---
 
-### Manipulação de Arquivos
-- Leitura e escrita em arquivos `.txt`
-- Gerenciador de contexto (`with open()`) para manuseio seguro
+## 🌟 Características
 
-### Programação Estruturada
-- Modularização em funções específicas
-- Controle de fluxo com `while` e `if/elif/else`
+### Funcionalidades Principais
+- ➕ **Adicionar Contatos** - Cadastre novos contatos com validação automática
+- 📋 **Listar Contatos** - Visualize todos os contatos em tabelas elegantes
+- 🔍 **Buscar Contatos** - Encontre contatos rapidamente pelo nome
+- 🗑️ **Remover Contatos** - Exclua contatos com confirmação de segurança
+- ✏️ **Editar Contatos** - Modifique informações de contatos existentes
+- 📤 **Exportar Dados** - Exporte sua agenda para JSON ou CSV
+- 💾 **Persistência Automática** - Dados salvos automaticamente
 
-### Tratamento de Exceções
-- Blocos `try...except` para robustez da aplicação
+### Características Técnicas
+- 🎨 **Interface Colorida** - Terminal estilizado com Rich
+- 🛡️ **Validação de Dados** - Sistema robusto de validação com regex
+- 📊 **Visualização em Tabelas** - Apresentação organizada dos dados
+- 🔄 **Barra de Progresso** - Feedback visual durante operações
+- 🎯 **Modularização** - Código organizado em módulos especializados
+- 🚀 **Execução Simples** - Scripts automatizados para instalação
 
-## 📁 Estrutura do Projeto
+---
 
-```
-agenda-de-contatos/
-├── main.py          # 🚀 Arquivo principal - menu interativo
-├── funcoes.py       # 🔧 Módulo com funções da agenda
-└── contatos.txt     # 📄 Arquivo de persistência dos dados
-```
-
-## 🚀 Como Executar
+## 🚀 Instalação
 
 ### Pré-requisitos
-- Python 3.x instalado no sistema
+- Python 3.7 ou superior
+- pip (gerenciador de pacotes Python)
 
-### Instalação e Execução
+### Método 1: Instalação Automática (Windows)
+```bash
+# Clone o repositório
+git clone https://github.com/AndreyBarfknecht/Agenda-de-Contatos-Python.git
 
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/AndreyBarfknecht/Agenda-de-Contatos-Python.git
-   ```
+# Entre no diretório
+cd Agenda-de-Contatos-Python
 
-2. **Navegue até o diretório**
-   ```bash
-   cd Agenda-de-Contatos-Python
-   ```
+# Execute o instalador (Windows)
+instalar.bat
+```
 
-3. **Execute o programa**
-   ```bash
-   python main.py
-   ```
+### Método 2: Instalação Manual
+```bash
+# Clone o repositório
+git clone https://github.com/AndreyBarfknecht/Agenda-de-Contatos-Python.git
 
-## 🎯 Como Usar
+# Entre no diretório
+cd Agenda-de-Contatos-Python
 
-Após executar o programa, você verá um menu interativo com as seguintes opções:
+# Instale as dependências
+pip install -r requirements.txt
+```
 
-1. **Adicionar Contato** - Insira nome, telefone e e-mail
-2. **Listar Contatos** - Visualize todos os contatos salvos
-3. **Buscar Contato** - Encontre um contato pelo nome
-4. **Remover Contato** - Exclua um contato da agenda
-5. **Sair** - Encerra o programa (dados são salvos automaticamente)
+### Dependências
+- `rich` - Interface colorida e tabelas elegantes
+- `pyfiglet` - Títulos em ASCII art
 
-## 📝 Exemplo de Uso
+---
+
+## 💻 Como Usar
+
+### Execução Rápida (Windows)
+```bash
+executar.bat
+```
+
+### Execução Manual
+```bash
+python main.py
+```
+
+### Menu Principal
+Após executar, você verá um menu interativo com as seguintes opções:
 
 ```
-=== AGENDA DE CONTATOS ===
-1. Adicionar Contato
-2. Listar Contatos
-3. Buscar Contato
-4. Remover Contato
-5. Sair
+[1] Adicionar Contato
+[2] Listar Contatos  
+[3] Buscar Contato
+[4] Remover Contato
+[5] Editar Contato
+[6] Exportar agenda para outros formatos
+[7] Salvar e Sair
+```
 
-Escolha uma opção: 1
+### Exemplos de Uso
 
+#### 📝 Adicionando um Contato
+```
 --- Adicionar Novo Contato ---
 Nome: João Silva
 Telefone: (11) 99999-9999
 E-mail: joao@email.com
 
-Contato adicionado com sucesso!
+✓ Contato adicionado com sucesso!
 ```
 
-## 🎓 Objetivos Educacionais
+#### 🔍 Buscando Contatos
+```
+--- Buscar Contato ---
+Nome: João
 
-Este projeto foi desenvolvido para demonstrar e praticar:
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┓
+┃ Nome               ┃ Telefone           ┃ E-mail             ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━┩
+│ João Silva         │ (11) 99999-9999    │ joao@email.com     │
+└────────────────────┴────────────────────┴────────────────────┘
+```
 
-- Fundamentos da programação em Python
-- Manipulação de estruturas de dados
-- Operações de entrada/saída de arquivos
-- Organização e modularização de código
-- Tratamento de erros e exceções
-- Interface de linha de comando
-- Persistência de dados
+#### 📤 Exportando Dados
+```
+--- Exportar Agenda ---
+[1] Exportar para JSON
+[2] Exportar para CSV
 
-## 📊 Status do Projeto
-
-⌛ **Em progresso** - Todas as funcionalidades implementadas testadas
-
-## 🤝 Contribuições
-
-Sugestões e melhorias são bem-vindas! Sinta-se à vontade para:
-
-- Reportar bugs
-- Sugerir novas funcionalidades
-- Enviar pull requests
-- Compartilhar feedback
-
-## 👨‍💻 Autor
-
-**Andrey Barfknecht Rodrigues**
+Escolha: 1
+✓ Agenda exportada para JSON com sucesso!
+```
 
 ---
 
-*Desenvolvido com 💙 como projeto de estudo em Python*
+## 🛠️ Tecnologias Utilizadas
+
+### Linguagem Principal
+- **Python 3.x** - Linguagem de programação principal
+
+### Bibliotecas Externas
+- **Rich** - Interface de terminal moderna e colorida
+- **PyFiglet** - Geração de texto em ASCII art
+
+### Módulos Python Nativos
+- **os** - Manipulação do sistema operacional
+- **re** - Expressões regulares para validação
+- **time** - Controle de tempo e pausas
+- **csv** - Exportação para formato CSV
+- **json** - Exportação para formato JSON
+
+### Conceitos Aplicados
+- **Programação Orientada a Objetos** - Estruturas de dados organizadas
+- **Modularização** - Separação de responsabilidades
+- **Tratamento de Exceções** - Robustez na execução
+- **Validação de Dados** - Entrada segura de informações
+- **Persistência de Dados** - Armazenamento permanente
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+Agenda-de-Contatos-Python/
+├── 📄 main.py                   # Ponto de entrada da aplicação
+├── 🎨 interface_usuario.py      # Interface e interação com usuário
+├── 🔧 gerenciador_arquivos.py   # Operações de arquivo e exportação
+├── ✅ validadores.py           # Validação de dados com regex
+├── 📋 requirements.txt         # Dependências do projeto
+├── 🚀 executar.bat            # Script de execução (Windows)
+├── ⚙️ instalar.bat            # Script de instalação (Windows)
+├── 📖 README.md               # Documentação do projeto
+├── 🔒 .gitignore              # Arquivos ignorados pelo Git
+├── 📝 .gitattributes          # Configurações do Git
+└── 📊 dados/                  # Arquivos gerados automaticamente
+    ├── contatos.txt           # Armazenamento principal
+    ├── contatos.json          # Exportação JSON
+    └── contatos.csv           # Exportação CSV
+```
+
+### Descrição dos Módulos
+
+#### `main.py` 🚀
+- **Função**: Ponto de entrada da aplicação
+- **Responsabilidades**: Menu principal, controle de fluxo, integração dos módulos
+
+#### `interface_usuario.py` 🎨
+- **Função**: Interface visual e interação
+- **Responsabilidades**: Menus, tabelas, cabeçalhos, entrada de dados
+
+#### `gerenciador_arquivos.py` 🔧
+- **Função**: Persistência e exportação de dados
+- **Responsabilidades**: Carregar/salvar arquivos, exportar JSON/CSV
+
+#### `validadores.py` ✅
+- **Função**: Validação e sanitização de dados
+- **Responsabilidades**: Padrões regex, validação de entrada
+
+---
+
+## 🎯 Funcionalidades Detalhadas
+
+### Sistema de Validação
+- **Nomes**: Aceita letras, acentos e espaços
+- **Telefones**: Números, espaços, parênteses e hífens
+- **E-mails**: Validação completa de formato de email
+
+### Busca Inteligente
+- Busca case-insensitive (maiúsculas/minúsculas)
+- Suporte a múltiplos resultados
+- Interface de seleção numerada
+
+### Exportação de Dados
+- **JSON**: Formato estruturado para backup
+- **CSV**: Compatível com Excel e planilhas
+
+### Experiência do Usuário
+- Interface colorida e intuitiva
+- Feedback visual com barras de progresso
+- Confirmações de segurança para operações críticas
+- Títulos estilizados em ASCII art
+
+---
+
+## 🔄 Fluxo de Dados
+
+```mermaid
+graph TD
+    A[Inicialização] --> B[Carregar contatos.txt]
+    B --> C[Menu Principal]
+    C --> D{Escolha do Usuário}
+    D -->|1| E[Adicionar Contato]
+    D -->|2| F[Listar Contatos]
+    D -->|3| G[Buscar Contato]
+    D -->|4| H[Remover Contato]
+    D -->|5| I[Editar Contato]
+    D -->|6| J[Exportar Dados]
+    D -->|7| K[Salvar e Sair]
+    E --> L[Validar Dados]
+    L --> M[Salvar em Memória]
+    M --> C
+    K --> N[Salvar contatos.txt]
+    N --> O[Fim]
+```
+
+---
+
+## 🎓 Objetivos Educacionais
+
+Este projeto demonstra a aplicação prática de diversos conceitos fundamentais:
+
+### Estruturas de Dados
+- **Listas** para armazenamento de coleções
+- **Dicionários** para dados estruturados
+- **Strings** e manipulação de texto
+
+### Programação Estruturada
+- Modularização com funções especializadas
+- Controle de fluxo com loops e condicionais
+- Tratamento de exceções
+
+### Manipulação de Arquivos
+- Leitura e escrita de arquivos texto
+- Serialização JSON
+- Exportação CSV
+
+### Interface de Usuário
+- Design de menus intuitivos
+- Feedback visual adequado
+- Validação de entrada
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. **Fork** o projeto
+2. Crie uma **branch** para sua feature (`git checkout -b feature/AmazingFeature`)
+3. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um **Pull Request**
+
+### Tipos de Contribuições
+- 🐛 Correção de bugs
+- ✨ Novas funcionalidades  
+- 📚 Melhorias na documentação
+- 🎨 Melhorias na interface
+- ⚡ Otimizações de performance
+
+---
+
+## 📜 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+<div align="center">
+
+**Andrey Barfknecht Rodrigues**
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndreyBarfknecht)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/andreybarfknecht)
+
+*Desenvolvido com ❤️ para fins educacionais*
+
+</div>
+
+---
+
+## 📞 Suporte
+
+Encontrou um problema? Tem alguma sugestão?
+
+- 🐛 [Reporte um bug](https://github.com/AndreyBarfknecht/Agenda-de-Contatos-Python/issues)
+- 💡 [Sugira uma feature](https://github.com/AndreyBarfknecht/Agenda-de-Contatos-Python/issues)
+- 📧 Entre em contato: [seu-email@domain.com]
+
+---
+
+<div align="center">
+
+**⭐ Se este projeto te ajudou, deixe uma estrela! ⭐**
+
+*Agenda de Contatos Python - Simplificando o gerenciamento de contatos*
+
+</div>
