@@ -253,128 +253,39 @@ def editar_contato(agenda_de_ceontato):
         #valores recebidos do validadores.py
     desenhar_cabecalho("Editar contato")
     
-    console.print("Escreva e pressione 'ENTER'")    
+    while True:
+        console.print("Escreva e pressione 'ENTER'")    
 
-    nome_recebido = validadores.nome_padrao()
+        nome_recebido = validadores.nome_padrao()
 
-    resultados_encontrados = []
+        resultados_encontrados = []
 
-    for contato in agenda_de_ceontato:
-        if nome_recebido.lower() == contato['nome'].lower():
-            resultados_encontrados.append(contato)
+        for contato in agenda_de_ceontato:
+            if nome_recebido.lower() == contato['nome'].lower():
+                resultados_encontrados.append(contato)
 
-    if len (resultados_encontrados) == 0:
-        console.print(f"\n[yellow]Nenhum contato encontrado com o termo '{nome_recebido}'.[/yellow]")
-        input("\n Pressione enter para voltar ao menu...")
-
-
-    elif len (resultados_encontrados) == 1:
-         # cria tabela
-        tabela = Table(title=f"\n[bright_blue]Contato Encontrados com o nome {nome_recebido}", show_header=True, header_style="magenta3")
-        # Adiciona as colunas
-        tabela.add_column("Nome", style="dark_slate_gray1", width=20)
-        tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
-        tabela.add_column("E-mail", style="dark_slate_gray1")
-        for contato in resultados_encontrados: # passa pela lista de resultados e adiciona a tabela
-            tabela.add_row(contato['nome'], contato['telefone'], contato['email'])
-            console.print(tabela)
-        console.print("[magenta3]Tem certeza que deseja editar este contato (s/n)")
-        confirmacao = console.input(f"\nDigite 's' pra editar o contato ou 'n' para não editar\n --> ")
-        if confirmacao.lower() == "s":
-            desenhar_cabecalho(f"Contato {nome_recebido}")
-            contato_para_editar = resultados_encontrados[0]
-            while True:
-                console.print(f"nome: {contato['nome']}\n\ntelefone: {contato['telefone']}\n\nemail: {contato['email']}")
-                console.print(f"\nO que você deseja editar?")
-                console.print("[1] - Nome")
-                console.print("[2] - Telefone")
-                console.print("[3] - Email")
-                console.print("[4] Salvar e voltar ao menu principal")
-                escolha = console.input("Digite uma das opçoes 1-4, e pressione 'ENTER'\n-->")
-                if escolha == "1":
-                    nome_recebido = validadores.nome_padrao()
-                    contato_para_editar['nome'] = nome_recebido
-                    console.print("\n[yellow]Sucesso, nome atualizado")
-                    input("\nPressione enter para voltar...")
-                    limpar_tela()
-                    desenhar_cabecalho(f"Contato {nome_recebido}")
-
-                elif escolha == "2":
-                    telefone_recebido = validadores.telefone_padrao()
-                    contato_para_editar['telefone'] = telefone_recebido
-                    console.print("\n[yello]Sucesso, telefone atualizado")
-                    input("\n Pressione enter para voltar ao menu...")
-                    limpar_tela()
-                    desenhar_cabecalho(f"Contato {nome_recebido}")
-
-                elif escolha == "3":
-                    email_recebido = validadores.email_padrao()
-                    contato_para_editar['email'] = email_recebido
-                    console.print("\n[yellow]Sucesso, email atualizado")
-                    input("\n Pressione enter para voltar ao menu...")
-                    limpar_tela()
-                    desenhar_cabecalho(f"Contato {nome_recebido}")
-
-                elif escolha == "4":
-                    console.print("\n[yellow]Contato Salvo")
-                    input("\nPressione enter para voltar ao menu...")
-                    break
-
-                else:
-                    console.print("Operação invalida")
-
-        """console.print() 
-        continuar = console.input("[yellow]Deseja fazer uma nova busca? (s/n) --> ").lower() # se quiser repetir a def
-        if continuar != "s":
-        break
-        #input("\nPressione Enter para voltar ao menu...")
-        limpar_tela()
-        desenhar_cabecalho("Remover Contato")"""
-
-    else:
-
-        console.print("[yellow]Vários contatos foram encontrados. Por favor, escolha qual deles quer editar:[/yellow]")
-        # cria tabela
-        tabela = Table(title=f"\n[bright_blue]Contatos Encontrados com o nome [magenta3]{nome_recebido}", show_header=True, header_style="magenta3")
-        # Adiciona as colunas
-        tabela.add_column("Número",style="dark_slate_gray1", width=20)
-        tabela.add_column("Nome", style="dark_slate_gray1", width=20)
-        tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
-        tabela.add_column("E-mail", style="dark_slate_gray1")
-        for indice, contato in enumerate(resultados_encontrados): #lopp para adicionar os contatos na tabela
-            tabela.add_row(str(indice + 1), contato['nome'], contato['telefone'], contato['email'])
-        
-       
-
-        while True:
-            limpar_tela()
-            desenhar_cabecalho("Editar Contato")
-            console.print(tabela)
-            escolha_str = console.input ("Digite o 'Número' do contato que você quer editar ou digite '0' para cancelar\n--> ")
+        if len (resultados_encontrados) == 0:
+            console.print(f"\n[yellow]Nenhum contato encontrado com o termo '{nome_recebido}'.[/yellow]")
+            #input("\n Pressione enter para voltar ao menu...")
 
 
-            try:
-            #  converte a escolha para um número inteiro
-                escolha_num = int(escolha_str)
-
-            # Verifica se o usuário quer cancelar
-                if escolha_num == 0:
-                    console.print("[cyan]Operação cancelada.[/cyan]")
-                    break
-            
-            # Verifica se o número está no intervalo correto
-                elif 1 <= escolha_num <= len(resultados_encontrados):
-                    contato_para_editar = resultados_encontrados[escolha_num - 1]
-                
-                # Pega o índice correto (usuário digita 1, que é o índice 0)
-                    indice_para_editar = escolha_num - 1
-                    contato_alvo = resultados_encontrados[indice_para_editar]
-
+        elif len (resultados_encontrados) == 1:
+            # cria tabela
+            tabela = Table(title=f"\n[bright_blue]Contato Encontrados com o nome {nome_recebido}", show_header=True, header_style="magenta3")
+            # Adiciona as colunas
+            tabela.add_column("Nome", style="dark_slate_gray1", width=20)
+            tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
+            tabela.add_column("E-mail", style="dark_slate_gray1")
+            for contato in resultados_encontrados: # passa pela lista de resultados e adiciona a tabela
+                tabela.add_row(contato['nome'], contato['telefone'], contato['email'])
+                console.print(tabela)
+            #console.print("[magenta3]Tem certeza que deseja editar este contato (s/n)")
+            confirmacao = console.input(f"\nDigite 's' pra editar o contato ou 'n' para não editar.\n --> ")
+            if confirmacao.lower() == "s":
+                desenhar_cabecalho(f"Contato {nome_recebido}")
+                contato_para_editar = resultados_encontrados[0]
                 while True:
-                    limpar_tela()
-                    desenhar_cabecalho("Editar contato")
-
-                    console.print(f"\nnome: {contato_para_editar['nome']}\n\ntelefone: {contato_para_editar['telefone']}\n\nemail: {contato_para_editar['email']}")
+                    console.print(f"nome: {contato['nome']}\ntelefone: {contato['telefone']}\nemail: {contato['email']}")
                     console.print(f"\nO que você deseja editar?")
                     console.print("[1] - Nome")
                     console.print("[2] - Telefone")
@@ -382,6 +293,8 @@ def editar_contato(agenda_de_ceontato):
                     console.print("[4] Salvar e voltar ao menu principal")
                     escolha = console.input("Digite uma das opçoes 1-4, e pressione 'ENTER'\n-->")
                     if escolha == "1":
+                        desenhar_cabecalho("Novo\nNome")
+                        console.print("Escreva e pressione 'ENTER'\n")
                         nome_recebido = validadores.nome_padrao()
                         contato_para_editar['nome'] = nome_recebido
                         console.print("\n[yellow]Sucesso, nome atualizado")
@@ -390,44 +303,151 @@ def editar_contato(agenda_de_ceontato):
                         desenhar_cabecalho(f"Contato {nome_recebido}")
 
                     elif escolha == "2":
+                        desenhar_cabecalho("Novo\nTelefone")
+                        console.print("Escreva e pressione 'ENTER'\n")
                         telefone_recebido = validadores.telefone_padrao()
                         contato_para_editar['telefone'] = telefone_recebido
-                        console.print("\n[yello]Sucesso, telefone atualizado")
-                        input("\n Pressione enter para voltar ao menu...")
+                        console.print("\n[yellow]Sucesso, telefone atualizado")
+                        input("\nPressione enter para voltar ao menu...")
                         limpar_tela()
                         desenhar_cabecalho(f"Contato {nome_recebido}")
 
                     elif escolha == "3":
+                        desenhar_cabecalho("Novo\nEmail")
+                        console.print("Escreva e pressione 'ENTER'\n")
                         email_recebido = validadores.email_padrao()
                         contato_para_editar['email'] = email_recebido
                         console.print("\n[yellow]Sucesso, email atualizado")
-                        input("\n Pressione enter para voltar ao menu...")
+                        input("\nPressione enter para voltar ao menu...")
                         limpar_tela()
                         desenhar_cabecalho(f"Contato {nome_recebido}")
 
                     elif escolha == "4":
                         console.print("\n[yellow]Contato Salvo")
-                        input("\n Pressione enter para voltar ao menu...")
+                        #input("\nPressione enter para voltar ao menu...")
                         break
 
                     else:
                         console.print("Operação invalida")
-                
-                    
-                
 
-                    
-                #else:
-                    # O usuário digitou um número, mas está fora do intervalo válido
-                    #console.print(f"[bold red]Escolha inválida. Por favor, digite um número entre 1 e {len(resultados_encontrados)}.[/bold red]")
+            """console.print() 
+            continuar = console.input("[yellow]Deseja fazer uma nova busca? (s/n) --> ").lower() # se quiser repetir a def
+            if continuar != "s":
+            break
+            #input("\nPressione Enter para voltar ao menu...")
+            limpar_tela()
+            desenhar_cabecalho("Remover Contato")"""
 
-            except ValueError:
-            # Se o int() falhar, significa que o usuário não digitou um número
-                console.print("[bold red]Entrada inválida. Por favor, digite apenas o número correspondente.[/bold red]")
+        else:
 
-
-
+            console.print("[yellow]Vários contatos foram encontrados. Por favor, escolha qual deles quer editar:[/yellow]")
+            # cria tabela
+            tabela = Table(title=f"\n[bright_blue]Contatos Encontrados com o nome [magenta3]{nome_recebido}", show_header=True, header_style="magenta3")
+            # Adiciona as colunas
+            tabela.add_column("Número",style="dark_slate_gray1", width=20)
+            tabela.add_column("Nome", style="dark_slate_gray1", width=20)
+            tabela.add_column("Telefone", style="dark_slate_gray1", width=20)
+            tabela.add_column("E-mail", style="dark_slate_gray1")
+            for indice, contato in enumerate(resultados_encontrados): #lopp para adicionar os contatos na tabela
+                tabela.add_row(str(indice + 1), contato['nome'], contato['telefone'], contato['email'])
+            
         
+
+            while True:
+                limpar_tela()
+                desenhar_cabecalho("Editar Contato")
+                console.print(tabela)
+                escolha_str = console.input ("Digite o 'Número' do contato que você quer editar ou digite '0' para cancelar\n--> ")
+
+
+                try:
+                #  converte a escolha para um número inteiro
+                    escolha_num = int(escolha_str)
+
+                # Verifica se o usuário quer cancelar
+                    if escolha_num == 0:
+                        console.print("[cyan]Operação cancelada.[/cyan]")
+                        break
+                
+                # Verifica se o número está no intervalo correto
+                    elif 1 <= escolha_num <= len(resultados_encontrados):
+                        contato_para_editar = resultados_encontrados[escolha_num - 1]
+                    
+                    # Pega o índice correto (usuário digita 1, que é o índice 0)
+                        #indice_para_editar = escolha_num - 1
+                        #contato_alvo = resultados_encontrados[indice_para_editar]
+
+                    while True:
+                        limpar_tela()
+                        desenhar_cabecalho("Editar contato")
+
+                        console.print(f"\nnome: {contato_para_editar['nome']}\ntelefone: {contato_para_editar['telefone']}\nemail: {contato_para_editar['email']}")
+                        console.print(f"\nO que você deseja editar?")
+                        console.print("[1] - Nome")
+                        console.print("[2] - Telefone")
+                        console.print("[3] - Email")
+                        console.print("[4] Salvar e voltar ao menu principal")
+                        escolha = console.input("Digite uma das opçoes 1-4, e pressione 'ENTER'\n-->")
+                        if escolha == "1":
+                            desenhar_cabecalho("Novo\nNome")
+                            console.print("Escreva e pressione 'ENTER'\n")
+                            nome_recebido = validadores.nome_padrao()
+                            contato_para_editar['nome'] = nome_recebido
+                            console.print("\n[yellow]Sucesso, nome atualizado")
+                            input("\nPressione enter para voltar...")
+                            limpar_tela()
+                            desenhar_cabecalho(f"Contato {nome_recebido}")
+
+                        elif escolha == "2":
+                            desenhar_cabecalho("Novo\nTelefone")
+                            console.print("Escreva e pressione 'ENTER'\n")
+                            telefone_recebido = validadores.telefone_padrao()
+                            contato_para_editar['telefone'] = telefone_recebido
+                            console.print("\n[yellow]Sucesso, telefone atualizado")
+                            input("\nPressione enter para voltar ao menu...")
+                            limpar_tela()
+                            desenhar_cabecalho(f"Contato {nome_recebido}")
+
+                        elif escolha == "3":
+                            desenhar_cabecalho("Novo\nEmail")
+                            console.print("Escreva e pressione 'ENTER'\n")
+                            email_recebido = validadores.email_padrao()
+                            contato_para_editar['email'] = email_recebido
+                            console.print("\n[yellow]Sucesso, email atualizado")
+                            input("\nPressione enter para voltar ao menu...")
+                            limpar_tela()
+                            desenhar_cabecalho(f"Contato {nome_recebido}")
+
+                        elif escolha == "4":
+                            console.print("\n[yellow]Contato Salvo")
+                            input("\nPressione enter para voltar ao menu...")
+                            break
+
+                        else:
+                            console.print("Operação invalida")
+                    
+                        
+                    
+
+                        
+                    #else:
+                        # O usuário digitou um número, mas está fora do intervalo válido
+                        #console.print(f"[bold red]Escolha inválida. Por favor, digite um número entre 1 e {len(resultados_encontrados)}.[/bold red]")
+
+                except ValueError:
+                # Se o int() falhar, significa que o usuário não digitou um número
+                    console.print("[bold red]Entrada inválida. Por favor, digite apenas o número correspondente.[/bold red]")
+
+        console.print()
+        continuar = console.input("[yellow]Deseja fazer uma nova busca? (s/n) --> ").lower()
+        if continuar != "s":
+                break
+            #input("\nPressione Enter para voltar ao menu...")
+        limpar_tela()
+        desenhar_cabecalho("Editar Contato")
+
+
+            
 
 
 
