@@ -22,7 +22,7 @@ while True:
     interface_usuario.console.print("[dark_slate_gray1][6] Exportar agenda para outros formatos.")
     interface_usuario.console.print("[dark_slate_gray1][7] Salvar e Sair.")
     interface_usuario.console.print() # Linha em branco
-    interface_usuario.console.print("[magenta3]Digite uma das opções 1-6, e pressione 'ENTER'. ")
+    interface_usuario.console.print("[magenta3]Digite uma das opções 1-7, e pressione 'ENTER'. ")
     escolha_usuario = input("--> ")
    
     #escolha do usuario
