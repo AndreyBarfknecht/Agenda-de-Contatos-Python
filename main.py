@@ -38,12 +38,12 @@ while True:
         interface_usuario.editar_contato(agenda_de_contatos)
     elif escolha_usuario == "6":
         interface_usuario.exporta_lista(agenda_de_contatos)
-    elif escolha_usuario == "7":
+    elif escolha_usuario == "7":    
         gerenciador_arquivos.salvar_agenda(agenda_de_contatos)
         break # Fim do programa
     else:
         interface_usuario.console.print("\n----------------------------------------------")
-        interface_usuario.console.print("Por favor digite uma das opções acima (1 - 6) ")
+        interface_usuario.console.print("Por favor digite uma das opções acima (1 - 7) ")
         interface_usuario.console.print("----------------------------------------------")
         input("\nPressione Enter para voltar ao menu...")
 

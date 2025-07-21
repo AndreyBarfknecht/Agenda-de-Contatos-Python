@@ -38,7 +38,7 @@ def criar_contato(agenda_de_contatos):
     desenhar_cabecalho("Criar Contato")
     console.print("Escreva e pressione 'ENTER'")
     
-    #valores recebidos do validadores.py
+    #Perguntas no padrão
     nome_recebido = validadores.nome_padrao()
     telefone_recebido = validadores.telefone_padrao()
     email_recebido = validadores.email_padrao()
