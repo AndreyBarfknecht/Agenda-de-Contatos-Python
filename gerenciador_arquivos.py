@@ -3,6 +3,7 @@ import time
 from rich.progress import Progress # barra de progresso
 import csv # exportar para CSV
 import json # exportar par JSON
+import os
 
 
 # Função para ler ou criar arquivo txt
@@ -78,7 +79,10 @@ def exportar_json(agenda_de_contatos):
 
             # pequena pausa para ver a animação.
             time.sleep(0.02) 
+        
+    caminho_completo = os.path.abspath("contatos.json")
     interface_usuario.console.print("\n[magenta3]Agenda Exportada para JSON com sucesso!")
+    interface_usuario.console.print(f"Arquivo salvo em [cyan]{caminho_completo}")
             
 #Função para exportar a agenda para CSV
 def exportar_csv(agenda_de_contatos):
@@ -101,5 +105,6 @@ def exportar_csv(agenda_de_contatos):
 
             # pequena pausa para ver a animação.
             time.sleep(0.02) 
-            
+    caminho_completo = os.path.abspath("contatos.csv")
     interface_usuario.console.print("\n[magenta3]Agenda Exportada para CSV com sucesso!")
+    interface_usuario.console.print(f"Arquivo salvo em [cyan]{caminho_completo}")

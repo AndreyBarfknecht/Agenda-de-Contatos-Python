@@ -446,11 +446,6 @@ def editar_contato(agenda_de_ceontato):
         limpar_tela()
         desenhar_cabecalho("Editar Contato")
 
-
-            
-
-
-
 #Função que chamas as outras para exportar
 def exporta_lista(agenda_de_contatos):
     desenhar_cabecalho("Exportar Agenda")
